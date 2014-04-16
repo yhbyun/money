@@ -14,6 +14,9 @@ var config = require('./lib/config/config');
 
 var app = express();
 
+// mysql settings
+require('./lib/config/mysql')(app);
+
 // Express settings
 require('./lib/config/express')(app);
 
