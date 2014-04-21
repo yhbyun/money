@@ -17,12 +17,12 @@ describe('GET /api/v1/moneybooks', function() {
       });
   });
 });
-
 describe('POST /api/v1/moneybooks', function() {
   it('should respond with status', function(done) {
     request(app)
       .post('/api/v1/moneybooks')
-      .expect(200)
+      .send({ member_id: '1', item: 'water', amount: '1200', date: '2014-04-21'})
+      .expect(201)
       .expect('Content-Type', /json/)
       .end(function(err, res) {
         if (err) return done(err);
@@ -31,16 +31,17 @@ describe('POST /api/v1/moneybooks', function() {
       });
   });
 });
-
 describe('PUT /api/v1/moneybooks/:id', function() {
   it('should respond with status', function(done) {
     request(app)
-      .put('/api/v1/moneybooks/1')
+      .put('/api/v1/moneybooks/3')
+      .send({ id: '3', member_id: '1', item: 'water(big)', amount: '2300', date: '2014-04-20'})
       .expect(200)
       .expect('Content-Type', /json/)
       .end(function(err, res) {
         if (err) return done(err);
         res.text.should.include('status', 'ok');
+        console.log('[test_moneybook] PUT res.text='+res.text); 
         done();
       });
   });
@@ -48,18 +49,22 @@ describe('PUT /api/v1/moneybooks/:id', function() {
 
 describe('DELETE /api/v1/moneybooks/:id', function() {
   var test_id = 1000;
+  /*
   before(function(done) {
     request(app)
       .post('/api/v1/moneybooks')
-      .send({ id: test_id, member_id: '1000'})
-      .expect(200)
+      .send({ member_id: '1', item: 'item to delete', amount: '1200', date: new Date()})
+      .expect(201)
       .expect('Content-Type', /json/)
       .end(function(err, res) {
         if (err) return done(err);
         res.text.should.include('status', 'ok');
+        console.log('[test_moneybook] DELETE before res.text='+res.text);
+        test_id = res.id;
         done();
       });
   });
+  */
   it('should respond with status', function(done) {
     request(app)
       .del('/api/v1/moneybooks/'+test_id)
