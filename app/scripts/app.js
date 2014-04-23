@@ -4,7 +4,9 @@ angular.module('moneyApp', [
   'ngCookies',
   'ngResource',
   'ngSanitize',
-  'ngRoute'
+  'ngRoute',
+  'ngTable'
+
 ])
   .config(function ($routeProvider, $locationProvider) {
     $routeProvider

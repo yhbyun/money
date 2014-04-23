@@ -1,5 +1,5 @@
 <div ng-include="'partials/navbar'"></div>
-
+<!-- 
 <div class="jumbotron">
   <h1>'Allo, 'Allo!</h1>
   <p class="lead">
@@ -19,3 +19,28 @@
 <div class="footer">
   <p>♥ from the Yeoman team</p>
 </div>
+ -->
+<div ng-controller="MainCtrl">  
+  <table ng-table="moneyBooks" class="table" >
+         <tr ng-repeat="user in $data"
+            ng-click="user.$selected = !user.$selected; changeSelection(user)">
+            <td class="text-center">
+                <span ng-if="!user.$edit">{{user.item}}</span>
+                <div ng-if="user.$edit"><input class="form-control" type="text" ng-model="user.item" /></div>
+            </td>
+            <td class="text-center">
+                <span ng-if="!user.$edit">{{user.amount}}</span>
+                <div ng-if="user.$edit"><input class="form-control" type="text" ng-model="user.amount" /></div>
+            </td>
+             <td class="text-center">
+                <span ng-if="!user.$edit">{{user.date}}</span>
+                <div ng-if="user.$edit"><input class="form-control" type="text" ng-model="user.date" /></div>
+            </td>
+            <td data-title="''" width="50">
+                <a ng-if="!user.$edit" href="" class="btn btn-default btn-xs" ng-click="user.$edit = true">Edit</a>
+                <a ng-if="user.$edit" href="" class="btn btn-primary btn-xs" ng-click="user.$edit = false">Save</a>
+            </td>
+        </tr>
+  </table>
+</div>
+    

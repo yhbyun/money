@@ -58,6 +58,11 @@ body {
 .marketing p + h4 {
   margin-top: 28px;
 }
+.gridStyle {
+            border: 1px solid rgb(212,212,212);
+            width: 400px; 
+            height: 300px
+}
 
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {
