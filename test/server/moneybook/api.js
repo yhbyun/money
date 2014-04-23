@@ -46,10 +46,8 @@ describe('PUT /api/v1/moneybooks/:id', function() {
       });
   });
 });
-
 describe('DELETE /api/v1/moneybooks/:id', function() {
   var test_id = 1000;
-  /*
   before(function(done) {
     request(app)
       .post('/api/v1/moneybooks')
@@ -59,12 +57,12 @@ describe('DELETE /api/v1/moneybooks/:id', function() {
       .end(function(err, res) {
         if (err) return done(err);
         res.text.should.include('status', 'ok');
-        console.log('[test_moneybook] DELETE before res.text='+res.text);
-        test_id = res.id;
+
+        var res_text = JSON.parse(res.text);
+        test_id = res_text.results.id;
         done();
       });
   });
-  */
   it('should respond with status', function(done) {
     request(app)
       .del('/api/v1/moneybooks/'+test_id)
@@ -77,7 +75,6 @@ describe('DELETE /api/v1/moneybooks/:id', function() {
       });
   });
 });
-
 describe('GET /api/v1/auto-items', function() {
   it('should respond with status', function(done) {
     request(app)
@@ -97,6 +94,29 @@ describe('GET /api/v1/auto-items', function() {
       .end(function(err, res) {
        if (err) return done(err);
         res.text.should.include('status', 'fail');
+        done();
+    });
+  });
+});
+describe('GET /api/v1/state-months', function() {
+  it('should respond with status', function(done) {
+    request(app)
+      .get('/api/v1/state-months?q=orange')
+      .expect(200)
+      .expect('Content-Type', /json/)
+      .end(function(err, res) {
+        if (err) return done(err);
+        res.text.should.include('status', 'ok');
+        done();
+      });
+  });
+  it('should respond with status', function(done) {
+    request(app)
+      .get('/api/v1/state-months') // without q parameter !!
+      .expect(200)
+      .end(function(err, res) {
+       if (err) return done(err);
+        res.text.should.include('status', 'ok');
         done();
     });
   });
