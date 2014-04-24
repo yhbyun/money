@@ -1,5 +1,10 @@
 'use strict';
 
+process.env.NODE_ENV = 'test';
+
+var Logger = require('../../../lib/logger');
+var log = new Logger();
+
 var should = require('should'),
     app = require('../../../server'),
     request = require('supertest');
@@ -41,7 +46,7 @@ describe('PUT /api/v1/moneybooks/:id', function() {
       .end(function(err, res) {
         if (err) return done(err);
         res.text.should.include('status', 'ok');
-        console.log('[test_moneybook] PUT res.text='+res.text); 
+        log.debug('[test_moneybook] PUT res.text='+res.text); 
         done();
       });
   });

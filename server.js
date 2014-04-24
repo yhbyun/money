@@ -9,6 +9,9 @@ var express = require('express');
 // Set default node environment to development
 process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 
+// path
+global.base_dir = __dirname; // project home dir
+
 // Application Config
 var config = require('./lib/config/config');
 
@@ -30,3 +33,4 @@ app.listen(config.port, function () {
 
 // Expose app
 exports = module.exports = app;
+
