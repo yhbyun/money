@@ -1,44 +1,53 @@
-<div ng-include="'partials/navbar'"></div>
-<!-- 
-<div class="jumbotron">
+  <div ng-include="'partials/navbar'"></div>
+  <!-- 
+  <div class="jumbotron">
   <h1>'Allo, 'Allo!</h1>
   <p class="lead">
     <img src="images/yeoman.png" alt="I'm Yeoman"><br>
     Always a pleasure scaffolding your apps.
   </p>
   <p><a class="btn btn-lg btn-success" ng-href="#">Splendid!</a></p>
-</div>
+  </div>
 
-<div class="row marketing">
+  <div class="row marketing">
   <div ng-repeat="thing in awesomeThings">
       <h4>{{thing.name}}</h4>
       <p>{{thing.info}}</p>
   </div>
-</div>
+  </div>
 
-<div class="footer">
+  <div class="footer">
   <p>♥ from the Yeoman team</p>
-</div>
- -->
-<div ng-controller="MainCtrl">
+  </div>
+  -->
+  <div ng-controller="MainCtrl">
   <table ng-table="moneyBooks" class="table">
+        <tr>
+            <td data-title="'항목'" header-class="text-center" sortable="'item'">
+                <input type = "text" class="form-control" ng-model="item" placeholder="항목을 입력하세요." ng-keyup="$event.keyCode == 13 ? enter(item, amount) : null" autofocus="true">
+            </td>
+            <td data-title="'금액'" header-class="text-center" sortable="'amount'">
+                <input type = "text" class="form-control" name ="amount" ng-model="amount" placeholder="금액을 입력하세요." ng-keyup="$event.keyCode == 13 ? enter(item, amount) : null"/>
+            </td>
+             <td data-title="'날짜'" header-class="text-center" sortable="'date'">
+               <input type = "date" class="form-control" name="date" ng-model="date"ng-keyup="$event.keyCode == 13 ? enter() : null"/>
+            </td>
+        </tr>
          <tr ng-repeat="user in data">
-            <td data-title="'항목'" header-class="text-center" class="text-left">
-                <span ng-if="!user.$edit">{{user.item}}</span>
-                <div ng-if="user.$edit"><input class="form-control" type="text" ng-model="user.item" /></div>
+            <td class="text-left">
+              <span ng-if="!user.$edit" ng-click="user.$edit = true">{{user.item}}</span>
+              <div ng-if="user.$edit"><input class="form-control" type="text" ng-model="user.item"  ng-keyup="$event.keyCode == 13 ? enter() : null" autofocus="true"/></div>
             </td>
-            <td data-title="'금액'" header-class="text-center" class="text-center">
-                <span ng-if="!user.$edit">{{user.amount}}</span>
-                <div ng-if="user.$edit"><input class="form-control" type="text" ng-model="user.amount" /></div>
+            <td class="text-center">
+                 <span ng-if="!user.$edit" ng-click="user.$edit = true">{{user.amount}}</span>
+                 <div ng-if="user.$edit"><input class="form-control" type="text" ng-model="user.amount" ng-click="user.$edit = false"/></div>
             </td>
-             <td data-title="'날짜'" header-class="text-center" class="text-center">
-                <span ng-if="!user.$edit">{{user.date}}</span>
-                <div ng-if="user.$edit"><input class="form-control" type="date" ng-model="user.date" /></div>
-            </td>
-            <td data-title="''" width="50">
-                <a ng-if="!user.$edit" href="" class="btn btn-default btn-xs" ng-click="user.$edit = true">Edit</a>
-                <a ng-if="user.$edit" href="" class="btn btn-primary btn-xs" ng-click="user.$edit = false">Save</a>
+             <td class="text-center">
+               <span ng-if="!user.$edit" ng-click="user.$edit = true">{{user.date}}</span>
+                <div ng-if="user.$edit"><input class="form-control" type="date" ng-model="user.date" ng-click="user.$edit = false"/></div>
             </td>
         </tr>
   </table>
-</div>
+  </div>
+
+
