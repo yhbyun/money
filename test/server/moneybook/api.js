@@ -6,6 +6,7 @@ var Logger = require('../../../lib/logger');
 var log = new Logger();
 
 var should = require('should'),
+    assert = require("assert"),
     app = require('../../../server'),
     request = require('supertest');
 
@@ -18,6 +19,20 @@ describe('GET /api/v1/moneybooks', function() {
       .end(function(err, res) {
         if (err) return done(err);
         res.text.should.include('status', 'ok');
+        done();
+      });
+  });
+  it('should size of result same as page_size parameter', function(done) {
+    request(app)
+      .get('/api/v1/moneybooks?page_size=3&page_no=2')
+      .expect(200)
+      .expect('Content-Type', /json/)
+      .end(function(err, res) {
+        if (err) return done(err);
+        res.text.should.include('status', 'ok');
+        var data = JSON.parse(res.text).results.data;
+        log.debug('.........res.text='+res.text);
+        assert.equal(3, data.length);
         done();
       });
   });
