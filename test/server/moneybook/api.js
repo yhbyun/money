@@ -11,6 +11,7 @@ var should = require('should'),
     request = require('supertest');
 
 describe('GET /api/v1/moneybooks', function() {
+/*
   it('should respond with status', function(done) {
     request(app)
       .get('/api/v1/moneybooks')
@@ -22,9 +23,10 @@ describe('GET /api/v1/moneybooks', function() {
         done();
       });
   });
+*/
   it('should size of result same as page_size parameter', function(done) {
     request(app)
-      .get('/api/v1/moneybooks?page_size=3&page_no=2')
+      .get('/api/v1/moneybooks?page_size=3&page_no=')
       .expect(200)
       .expect('Content-Type', /json/)
       .end(function(err, res) {
@@ -37,6 +39,7 @@ describe('GET /api/v1/moneybooks', function() {
       });
   });
 });
+/*
 describe('POST /api/v1/moneybooks', function() {
   it('should respond with status', function(done) {
     request(app)
@@ -46,7 +49,8 @@ describe('POST /api/v1/moneybooks', function() {
       .expect('Content-Type', /json/)
       .end(function(err, res) {
         if (err) return done(err);
-        res.text.should.include('status', 'ok');
+        log.debug('.........res.text='+res.text);
+       res.text.should.include('status', 'ok');
         done();
       });
   });
@@ -121,11 +125,12 @@ describe('GET /api/v1/auto-items', function() {
 describe('GET /api/v1/state-months', function() {
   it('should respond with status', function(done) {
     request(app)
-      .get('/api/v1/state-months?q=orange')
+      .get('/api/v1/state-months?q=orange&page_size=2')
       .expect(200)
       .expect('Content-Type', /json/)
       .end(function(err, res) {
         if (err) return done(err);
+        log.debug('.........res.text='+res.text);
         res.text.should.include('status', 'ok');
         done();
       });
@@ -135,9 +140,11 @@ describe('GET /api/v1/state-months', function() {
       .get('/api/v1/state-months') // without q parameter !!
       .expect(200)
       .end(function(err, res) {
-       if (err) return done(err);
+        if (err) return done(err);
+        log.debug('.........res.text='+res.text);
         res.text.should.include('status', 'ok');
         done();
     });
   });
 });
+*/
