@@ -17,37 +17,45 @@
   </div>
 
   <div class="footer">
-  <p>♥ from the Yeoman team</p>
+  <p>♥ from the Yeoman team</p> 
   </div>
   -->
-  <div ng-controller="MainCtrl">
-  <table ng-table="moneyBooks" class="table">
+  <div ng-controller="MainCtrl" data-ng-init="init()">
+    <table ng-table="moneyBooks" class="table">
         <tr>
             <td data-title="'항목'" header-class="text-center" sortable="'item'">
-                <input type = "text" class="form-control" ng-model="item" placeholder="항목을 입력하세요." ng-keyup="$event.keyCode == 13 ? enter(item, amount) : null" autofocus="true">
+                <input type = "text" class="form-control" ng-model="info.item" placeholder="항목을 입력하세요." ng-keyup="$event.keyCode == 13 ? add(info) : items(info.item)" list="items" autofocus="true">
+                <datalist id="items">
+                 <option  data-ng-repeat="items in itemdata" value="{{items.item}}">
+                </datalist>
             </td>
             <td data-title="'금액'" header-class="text-center" sortable="'amount'">
-                <input type = "text" class="form-control" name ="amount" ng-model="amount" placeholder="금액을 입력하세요." ng-keyup="$event.keyCode == 13 ? enter(item, amount) : null"/>
+                <input type = "text" class="form-control" ng-model="info.amount" placeholder="금액을 입력하세요." ng-keyup="$event.keyCode == 13 ? add(info) : null"/>
             </td>
              <td data-title="'날짜'" header-class="text-center" sortable="'date'">
-               <input type = "date" class="form-control" name="date" ng-model="date"ng-keyup="$event.keyCode == 13 ? enter() : null"/>
+               <input type = "date" class="form-control" ng-model="info.date" ng-keyup="$event.keyCode == 13 ? add(info) : null"/>
             </td>
         </tr>
          <tr ng-repeat="user in data">
+            <td ng-hide = "true">{{user.id}}</td>
             <td class="text-left">
               <span ng-if="!user.$edit" ng-click="user.$edit = true">{{user.item}}</span>
-              <div ng-if="user.$edit"><input class="form-control" type="text" ng-model="user.item"  ng-keyup="$event.keyCode == 13 ? enter() : null" autofocus="true"/></div>
+              <div ng-if="user.$edit"><input class="form-control" type="text" ng-model="user.item" ng-keyup="$event.keyCode == 13 ? update(user) : null" autofocus="true"/></div>
             </td>
             <td class="text-center">
                  <span ng-if="!user.$edit" ng-click="user.$edit = true">{{user.amount}}</span>
-                 <div ng-if="user.$edit"><input class="form-control" type="text" ng-model="user.amount" ng-click="user.$edit = false"/></div>
+                 <div ng-if="user.$edit"><input class="form-control" type="text" ng-model="user.amount" ng-keyup="$event.keyCode == 13 ? update(user) : null"/></div>
             </td>
-             <td class="text-center">
+            <td class="text-center">
                <span ng-if="!user.$edit" ng-click="user.$edit = true">{{user.date}}</span>
-                <div ng-if="user.$edit"><input class="form-control" type="date" ng-model="user.date" ng-click="user.$edit = false"/></div>
+                <div ng-if="user.$edit"><input class="form-control" type="date" ng-model="user.date" ng-keyup="$event.keyCode == 13 ? update(user) : null"/></div>
+            </td>
+            <td class="text-center">
+               <button id="clear-completed" ng-click="delete(user.id)" ng-show="user.$edit == true">삭제</button>
+               <div ng-if="user.$edit"><button id="clear-completed" ng-click="user.$edit = false">취소</button></div>
             </td>
         </tr>
-  </table>
+    </table>
   </div>
 
 
