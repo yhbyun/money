@@ -4,8 +4,8 @@ exports.config = {
 
   // Capabilities to be passed to the webdriver instance.
   capabilities: {
-    //'browserName': 'chrome',
-    'browserName': 'firefox'
+    'browserName': 'chrome'
+    //'browserName': 'firefox'
   },
 
   // A base URL for your application under test. Calls to protractor.get()
