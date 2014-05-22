@@ -7,7 +7,9 @@
     "ejs": "~0.8.4",
     "mysql": ">=0.2.x",
     "winston": "~0.7.3",
-    "q": "^1.0.1"
+    "q": "^1.0.1",
+    "nodemailer": "~0.6.5",
+    "randomstring": "~1.0.3"
   },
   "devDependencies": {
     "grunt": "~0.4.1",

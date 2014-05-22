@@ -11,7 +11,15 @@ var should = require('should'),
     request = require('supertest');
 
 describe('GET /api/v1/moneybooks', function() {
-/*
+  before(function(done) {
+    request(app)
+      .post('/api/v1/users-login')
+      .send({ email: 'jhkim@ecplaza.net', password: 'ybE8a6K'})
+      .expect(201)
+      .end(function(err, res) {
+        done();
+      });
+  });
   it('should respond with status', function(done) {
     request(app)
       .get('/api/v1/moneybooks')
@@ -23,7 +31,6 @@ describe('GET /api/v1/moneybooks', function() {
         done();
       });
   });
-*/
   it('should size of result same as page_size parameter', function(done) {
     request(app)
       .get('/api/v1/moneybooks?page_size=3&page_no=')
@@ -39,7 +46,6 @@ describe('GET /api/v1/moneybooks', function() {
       });
   });
 });
-/*
 describe('POST /api/v1/moneybooks', function() {
   it('should respond with status', function(done) {
     request(app)
@@ -147,4 +153,3 @@ describe('GET /api/v1/state-months', function() {
     });
   });
 });
-*/
