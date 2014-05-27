@@ -1,18 +1,20 @@
   <div ng-include="'partials/navbar'"></div>
+  <div ng-controller="LoginCtrl" class="jumbotron">
+		<form role="form" ng-submit="login()">
+			<div class="form-group text-left">
+				<label for="data.email">이메일</label>
+				<input type="email" class="form-control" ng-model="data.email" required placeholder="Enter email"/>
+			</div>
+			<div class="form-group text-left">
+				<label for="data.email">비밀번호</label>
+				<input type="text" class="form-control" ng-model="data.password" required placeholder="Enter password"/>
+			</div>
+			<button type="submit" class="btn btn-primary">Sign in</button>
+			<div class="alert alert-danger" ng-show="data.msg">{{data.msg}}</div>
+		</form>
+	</div>
+
   <div ng-controller="UserCtrl">
-    <table ng-table="moneyBooks" class="table">
-        <tr>
-            <td data-title="'이메일'" header-class="text-center">
-              <input type="text" placeholder="Email" />
-            </td>
-            <td data-title="'비밀번호'" header-class="text-center" sortable="'amount'">
-              <input type="text" placeholder="Password" />
-            </td>
-             <td data-title="'날짜'" header-class="text-center" sortable="'date'">
-               <button id="clear-completed" ng-click="login(user.id)" ng-show="user.$edit == true">Sign in</button>
-            </td>
-        </tr>
-    </table>
     <table class="table">
       <tr>
         <td colspan='3'>New to Moneybook?
