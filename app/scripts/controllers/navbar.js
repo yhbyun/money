@@ -5,6 +5,14 @@ angular.module('moneyApp')
     $scope.menu = [{
       'title': 'Home',
       'link': '/'
+    },
+    {
+      'title': 'Sign in',
+      'link': '/api/users-login'
+    },
+    {
+      'title': 'Logout',
+      'link': '/api/users-logout'
     }];
     
     $scope.isActive = function(route) {
