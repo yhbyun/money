@@ -19,6 +19,14 @@ angular.module('moneyApp')
         'link': '/'
       },
       {
+        'title': '가계부 리스트',
+        'link': '/moneybooks'
+      },
+      {
+        'title': '월별 리스트',
+        'link': '/state-months'
+      },
+      {
         'title': 'Logout',
         'link': '/api/users-logout'
       }];
