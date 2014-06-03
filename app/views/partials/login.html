@@ -1,5 +1,6 @@
   <div ng-include="'partials/navbar'"></div>
-  <div ng-controller="LoginCtrl" class="jumbotron">
+
+  <div ng-controller="LoginCtrl" class="jumbotron1">
 		<form role="form" ng-submit="login()">
 			<div class="form-group text-left">
 				<label for="data.email">이메일</label>
@@ -14,22 +15,18 @@
 		</form>
 	</div>
 
-  <div ng-controller="UserCtrl">
-    <table class="table">
-      <tr>
-        <td colspan='3'>New to Moneybook?
-        <td>
-      </tr>
-        <tr>
-            <td data-title="'이메일'" header-class="text-center">
-              <input type="text" ng-model="user.email" placeholder="Email" />
-            </td>
-            <td data-title="'비밀번호'" header-class="text-center">
-              <input type="text" ng-model="user.password" placeholder="Password" />
-            </td>
-             <td data-title="''" header-class="text-center">
-               <button id="clear-completed" ng-click="add(user)">Sign up for moneybook</button>
-            </td>
-        </tr>
-    </table>
+  <div ng-controller="UserCtrl" class="jumbotron1">
+  <label>New to Moneybook?</label>
+		<form role="form" ng-submit="add()">
+			<div class="form-group text-left">
+				<label for="user.email">이메일</label>
+				<input type="email" class="form-control" ng-model="user.email" required placeholder="Enter email"/>
+			</div>
+			<div class="form-group text-left">
+				<label for="user.email">비밀번호</label>
+				<input type="text" class="form-control" ng-model="user.password" required placeholder="Enter password"/>
+			</div>
+			<button type="submit" class="btn btn-primary">Sign up for moneybook</button>
+			<div class="alert alert-danger" ng-show="user.msg">{{user.msg}}</div>
+		</form>
   </div>

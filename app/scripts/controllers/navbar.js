@@ -2,7 +2,7 @@
 
 angular.module('moneyApp')
   .controller('NavbarCtrl', function ($scope, $location, $cookies) {
-    //console.log('[NavbarCtrl] $cookies.auth='+$cookies.auth);
+    console.log('[NavbarCtrl] $cookies.auth='+$cookies.auth);
     var auth = $cookies.auth;
     if (auth == undefined) {
       $scope.menu = [{
