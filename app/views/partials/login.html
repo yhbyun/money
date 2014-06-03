@@ -15,21 +15,16 @@
 	</div>
 
   <div ng-controller="UserCtrl">
-    <table class="table">
-      <tr>
-        <td colspan='3'>New to Moneybook?
-        <td>
-      </tr>
-        <tr>
-            <td data-title="'이메일'" header-class="text-center">
-              <input type="text" ng-model="user.email" placeholder="Email" />
-            </td>
-            <td data-title="'비밀번호'" header-class="text-center">
-              <input type="password" ng-model="user.password" placeholder="Password" />
-            </td>
-             <td data-title="''" header-class="text-center">
-               <button id="clear-completed" ng-click="add(user)">Sign up for moneybook</button>
-            </td>
-        </tr>
-    </table>
+    <form class="form-inline" role="form">
+      <legend>회원가입</legend>
+      <div class="form-group">
+        <label class="sr-only" for="user.email">이메일</label>
+        <input type="email" class="form-control" ng-model="user.email" required placeholder="Enter email" />
+      </div>
+      <div class="form-group">
+        <label class="sr-only" for="user.password">비밀번호</label>
+        <input type="password" class="form-control" ng-model="user.password" required placeholder="Password" />
+      </div>
+      <button type="submit" class="btn btn-default" ng-click="add(user)">회원가입</button>
+    </form>
   </div>
