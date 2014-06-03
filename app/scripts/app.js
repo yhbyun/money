@@ -26,6 +26,14 @@ angular.module('moneyApp', [
         templateUrl: 'partials/welcome',
         controller: 'UserCtrl'
       })
+      .when('/moneybooks', {
+        templateUrl: 'partials/main',
+        controller: 'MainCtrl'
+      })
+      .when('/state-months', {
+        templateUrl: 'partials/state-months',
+        controller: 'StateMonthsCtrl'
+      })
 /*
       .when('/api/users-logout', {
         templateUrl: '/',
