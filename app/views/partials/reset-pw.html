@@ -1,0 +1,14 @@
+  <div ng-include="'partials/navbar'"></div>
+
+  <div ng-controller="ResetPwCtrl" class="jumbotron1">
+    <h1>Reset Password</h1>
+		<form role="form" ng-submit="reset()">
+			<div class="form-group text-left">
+				<label for="data.email">이메일</label>
+				<input type="email" class="form-control" ng-model="data.email" required placeholder="Enter email"/>
+			</div>
+			<button type="submit" class="btn btn-primary">Reset</button>
+			<div class="alert alert-danger" ng-show="data.msg">{{data.msg}}</div>
+		</form>
+	</div>
+

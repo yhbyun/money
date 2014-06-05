@@ -11,6 +11,7 @@
 				<input type="password" class="form-control" ng-model="data.password" required placeholder="Enter password"/>
 			</div>
 			<button type="submit" class="btn btn-primary">Sign in</button>
+      <input type="button" class="btn btn-primary" ng-click="goReset()" value="Reset Password" />
 			<div class="alert alert-danger" ng-show="data.msg">{{data.msg}}</div>
 		</form>
 	</div>

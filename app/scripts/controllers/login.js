@@ -18,6 +18,10 @@ angular.module('moneyApp')
           }
       });
     };
+
+    $scope.goReset = function() {
+      $location.path('/users-reset');
+    };
   })
   .controller('LogoutCtrl', function ($scope, $http, $location, $cookies) {
     //console.log('logout() start... $cookies='+$cookies.auth);
@@ -30,4 +34,16 @@ angular.module('moneyApp')
           $location.path('/api/users-login');
         }
     });
+  })
+  .controller('ResetPwCtrl', function ($scope, $http, $location, $cookies) {
+
+    $scope.data = {};
+
+    $scope.reset = function () {
+      console.log('[ResetPwCtrl] reset() start... $scope.data='+$scope.data);
+      $http.post('/api/v1/users-reset', $scope.data).success(function(result) {
+        alert('Please check your email for changed password!!');
+        $location.path('/api/users-login');
+      });
+    }
   });

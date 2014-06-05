@@ -26,6 +26,10 @@ angular.module('moneyApp', [
         templateUrl: 'partials/welcome',
         controller: 'UserCtrl'
       })
+      .when('/users-reset', {
+        templateUrl: 'partials/reset-pw',
+        controller: 'ResetPwCtrl'
+      })
       .when('/moneybooks', {
         templateUrl: 'partials/main',
         controller: 'MainCtrl'
