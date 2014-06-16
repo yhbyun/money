@@ -27,6 +27,10 @@ angular.module('moneyApp')
         'link': '/state-months'
       },
       {
+        'title': '정보변경',
+        'link': '/users-modify'
+      },
+      {
         'title': 'Logout',
         'link': '/api/users-logout'
       }];

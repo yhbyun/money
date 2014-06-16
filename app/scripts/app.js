@@ -18,6 +18,10 @@ angular.module('moneyApp', [
         templateUrl: 'partials/login',
         controller: 'UserCtrl'
       })
+      .when('/users-modify', {
+        templateUrl: 'partials/users-modify',
+        controller: 'UserCtrl'
+      })
       .when('/api/users-logout', {
         templateUrl: 'partials/login',
         controller: 'LogoutCtrl'

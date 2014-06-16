@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('moneyApp')
-  .controller('UserCtrl', function ($scope, $http, $location) {
+  .controller('UserCtrl', function ($scope, $http, $location, $cookies) {
 
   //µî·Ï
   $scope.add = function() {
@@ -20,4 +20,15 @@ angular.module('moneyApp')
       }
     });
   }; //$scope.add
+
+  $scope.modify = function () {
+    console.log('$scope.data='+$scope.data);
+    console.log('$scope.data.email='+$scope.data.email);
+//    alert($cookies.auth);
+    $http.put('api/v1/users/' + $cookies.auth, $scope.data).success(function(result) {
+      alert('Modified Member Info.');
+      $location.path('/');
+    });
+  }
+
 });
